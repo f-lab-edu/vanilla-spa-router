@@ -31,13 +31,16 @@ export class Router {
     const route =
       this.routes.find((route) => route.path === path) || this.routes[0];
 
-    this.rootElement.innerHTML = '';
+    while (this.rootElement.firstChild) {
+      this.rootElement.removeChild(this.rootElement.firstChild);
+    }
 
     try {
       const component = route.component();
 
       if (component instanceof Promise) {
-        component.then((element) => this.rootElement.appendChild(element));
+        const element = await component;
+        this.rootElement.appendChild(element);
       } else {
         this.rootElement.appendChild(component);
       }

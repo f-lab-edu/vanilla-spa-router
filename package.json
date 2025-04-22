@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "devDependencies": {
+    "jsdom": "^26.1.0",
     "msw": "^2.7.5",
     "typescript": "~5.7.2",
     "vite": "^6.3.1",
