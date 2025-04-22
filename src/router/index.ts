@@ -26,19 +26,23 @@ export class Router {
     this.handleRoute();
   }
 
-  private handleRoute() {
+  private async handleRoute() {
     const path = window.location.pathname;
     const route =
       this.routes.find((route) => route.path === path) || this.routes[0];
 
     this.rootElement.innerHTML = '';
 
-    const component = route.component();
+    try {
+      const component = route.component();
 
-    if (component instanceof Promise) {
-      component.then((element) => this.rootElement.appendChild(element));
-    } else {
-      this.rootElement.appendChild(component);
+      if (component instanceof Promise) {
+        component.then((element) => this.rootElement.appendChild(element));
+      } else {
+        this.rootElement.appendChild(component);
+      }
+    } catch (error) {
+      console.error('Error rendering route', error);
     }
   }
 

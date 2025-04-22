@@ -4,7 +4,7 @@ import { Router } from './router';
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/products', component: ProductList },
+  { path: '/product', component: ProductList },
 ];
 
 const rootElement = document.getElementById('app');
