@@ -2,6 +2,7 @@ import { Home } from './pages/Home';
 import { ProductList } from './pages/ProductList';
 import { Router } from './router';
 import { worker } from './mocks/browser';
+import './style.css';
 
 if (process.env.NODE_ENV === 'development') {
   worker.start({
