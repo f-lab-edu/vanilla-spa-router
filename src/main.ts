@@ -1,6 +1,13 @@
 import { Home } from './pages/Home';
 import { ProductList } from './pages/ProductList';
 import { Router } from './router';
+import { worker } from './mocks/browser';
+
+if (process.env.NODE_ENV === 'development') {
+  worker.start({
+    onUnhandledRequest: 'bypass',
+  });
+}
 
 const routes = [
   { path: '/', component: Home },
