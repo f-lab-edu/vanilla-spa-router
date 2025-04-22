@@ -1,17 +1,31 @@
 # vanilla-spa-router
 
-1. SPA 라우팅
+- 요구사항
 
-- 경로 변경 시 페이지 리로딩 없이 화면 전환
-- / → 홈, /product → 상품 목록 페이지
+  - 홈화면 -> 상품화면으로 이동 ( /product)
+  - /product 화면에서 API호출을 통해 상품리스트를 렌더링
+    - 이미지, 상품 이름이 들어간 카드형태 리스트
+  - Typescript로 작성하기
 
-2. 상품 화면
+- 세부 구현 사항
 
-- /product 경로에서 API 호출 (MSW 사용 예정)
-- 호출한 데이터를 카드 형태로 렌더링 (상품 이미지 + 이름)
+  - Router 구현
 
-3. 기술스택
+    - Router 클래스 구현
+    - Route 핸들링 로직 구현
 
-- Vanilla JS + TypeScript
-- MSW로 API mocking
-- Jest로 테스트
+  - 페이지 컴포넌트 구현
+
+    - Home 컴포넌트
+    - ProductList 컴포넌트
+
+  - API 구현
+
+    - MSW 설정
+    - 상품 API mocking
+    - API 호출 함수 구현
+
+  - 테스트 코드 작성
+
+    - Router 테스트
+    - API 호출 테스트
