@@ -1,3 +1,5 @@
+import './home.css';
+
 export const Home = () => {
   const home = document.createElement('div');
   home.className = 'home';
