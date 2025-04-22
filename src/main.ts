@@ -4,7 +4,7 @@ import { Router } from './router';
 import { worker } from './mocks/browser';
 import './style.css';
 
-if (process.env.NODE_ENV === 'development') {
+if (import.meta.env.DEV) {
   worker.start({
     onUnhandledRequest: 'bypass',
   });
