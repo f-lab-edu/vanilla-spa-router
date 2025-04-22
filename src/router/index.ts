@@ -1,0 +1,49 @@
+import { Route } from './types';
+
+export class Router {
+  private routes: Route[];
+  private rootElement: HTMLElement;
+
+  constructor(routes: Route[], rootElement: HTMLElement) {
+    this.routes = routes;
+    this.rootElement = rootElement;
+    this.init();
+  }
+
+  private init() {
+    window.addEventListener('popstate', () => this.handleRoute());
+
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a');
+
+      if (link) {
+        e.preventDefault();
+        this.navigate(link.getAttribute('href') || '/');
+      }
+    });
+
+    this.handleRoute();
+  }
+
+  private handleRoute() {
+    const path = window.location.pathname;
+    const route =
+      this.routes.find((route) => route.path === path) || this.routes[0];
+
+    this.rootElement.innerHTML = '';
+
+    const component = route.component();
+
+    if (component instanceof Promise) {
+      component.then((element) => this.rootElement.appendChild(element));
+    } else {
+      this.rootElement.appendChild(component);
+    }
+  }
+
+  public navigate(path: string) {
+    window.history.pushState({}, '', path);
+    this.handleRoute();
+  }
+}
