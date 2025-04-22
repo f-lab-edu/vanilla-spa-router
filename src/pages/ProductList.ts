@@ -1,5 +1,6 @@
 import { fetchProducts } from '../api/products';
 import { Product } from '../types/product';
+import './productList.css';
 
 export const ProductList = async (): Promise<HTMLElement> => {
   const product = document.createElement('div');

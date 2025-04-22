@@ -1,0 +1,35 @@
+.product-list {
+  display: flex;
+  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover {
+  cursor: pointer;
+}
+
+.product-card img {
+  width: 250px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+
+.product-card p {
+  padding: 0 1rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #666;
+}
